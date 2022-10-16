@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 interface CardProps {
   tags: string[];
   imageUri?: string;
+  imageAltText: string;
   title: string;
   description: string;
   link: string;
@@ -22,10 +23,10 @@ const Card = (props: CardProps) => {
             <img
               className={styles.image}
               src={props.imageUri}
-              alt={props.title}
+              alt={props.imageAltText}
             />
           }
-          otherwise={<div className={styles["image-placeholder"]}></div>}
+          otherwise={<div className={styles["image-placeholder"]}>{props.imageAltText}</div>}
         />
         <h5 className={styles.title}>
           {props.title}
