@@ -1,0 +1,28 @@
+.hero-section {
+  background: url('./background.svg') #F4F4F4;
+  @apply bg-cover bg-no-repeat;
+
+  .inner {
+    @apply mx-auto container flex flex-col justify-center lg:flex-row lg:justify-between p-2 pb-8 lg:p-12;
+
+    .left-side {
+      @apply flex flex-col justify-center lg:max-w-md xl:max-w-lg;
+
+      img {
+        @apply object-contain w-auto h-auto;
+      }
+
+      p {
+        @apply text-base leading-relaxed text-justify;
+      }
+    }
+
+    .right-side {
+      @apply hidden lg:block;
+
+      img {
+        @apply object-contain w-auto h-auto;
+      }
+    }
+  }
+}

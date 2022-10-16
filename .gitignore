@@ -1,0 +1,40 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Editor metadata
+.vscode/
+!.vscode/extensions.json
+.idea/
+
+# npm
+node_modules/
+
+# test coverage data
+coverage/
+
+# local API keys and secrets
+.env.local
+.env.*.local
+
+# sensitive files
+*.pem
+*.swp
+
+# hot updates
+dist/*.hot-update.*
+build/
+
+# next.js
+.next/
+out/
+
+# typescript
+*.tsbuildinfo

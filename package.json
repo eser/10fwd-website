@@ -1,0 +1,67 @@
+{
+  "name": "10fwd-website",
+  "private": false,
+  "description": "10forward web site",
+  "keywords": [
+    "acik",
+    "kaynak",
+    "web",
+    "site"
+  ],
+  "version": "0.11.0",
+  "homepage": "https://10forward.io",
+  "author": "10forward <info@10forward.io>",
+  "contributors": [
+    {
+      "name": "Eser Ozvataf",
+      "email": "eser@ozvataf.com",
+      "url": "https://eser.ozvataf.com/"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10fwd/10fwd-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/10fwd/10fwd-website/issues"
+  },
+  "license": "Apache-2.0",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "cleanup": "rm -rf yarn.lock package-lock.json node_modules/ .next/",
+    "build": "next build",
+    "dev": "next dev",
+    "export": "next build && next export",
+    "lint": "next lint",
+    "adr": "adr-tool",
+    "prepare": "husky install",
+    "http:preview": "cd out && http-server"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.0.12",
+    "next": "12.3.1",
+    "next-seo": "^5.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.7",
+    "@types/node": "18.11.0",
+    "@types/react": "18.0.21",
+    "adr-tool": "^0.3.0",
+    "autoprefixer": "^10.4.12",
+    "eslint": "8.25.0",
+    "eslint-config-next": "12.3.1",
+    "husky": "^8.0.1",
+    "postcss": "^8.4.18",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.8.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "next lint",
+      "pre-push": "next lint"
+    }
+  }
+}

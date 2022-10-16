@@ -1,0 +1,47 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply p-0 my-0 dark:bg-background-dark bg-background dark:text-gray-100 text-gray-900;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+      Helvetica Neue, sans-serif;
+  }
+
+  main {
+    @apply w-full;
+  }
+
+  h1 {
+    @apply text-4xl mb-8;
+  }
+
+  h2 {
+    @apply text-3xl mb-6;
+  }
+
+  h3 {
+    @apply text-2xl mb-4;
+  }
+
+  h4 {
+    @apply text-xl mb-2;
+  }
+
+  a {
+    @apply text-sky-600 hover:underline underline-offset-4;
+  }
+}
+
+@tailwind components;
+
+@layer components {
+  .buttons {
+    @apply flex flex-col sm:flex-row sm:items-center sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4 lg:justify-start;
+
+    a {
+      @apply px-8 py-3 text-lg font-semibold rounded bg-secondary text-white no-underline transform transition hover:scale-105 duration-300 ease-in-out;
+    }
+  }
+}
+
+@tailwind utilities;
