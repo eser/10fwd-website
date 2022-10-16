@@ -24,7 +24,7 @@ const Home: CustomPage = () => {
           link="https://acik-kaynak.org/"
         />
         <Card
-          tags={["mecra"]}
+          tags={["topluluk"]}
           title="JSTANBUL"
           description="JavaScript ve ilintili teknolojiler ile ilgili kullanıcı topluluğu."
           link="http://jstanbul.org/"
