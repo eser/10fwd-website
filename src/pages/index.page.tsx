@@ -18,10 +18,15 @@ const Home: CustomPage = () => {
         />
         <Card
           tags={["mecra"]}
-          title="açık-kaynak.org"
-          imageUri="/covers/acikkaynak-logo.svg"
-          description="Açık kaynak hakkında bilgilendirici içeriklere ve projelere ulaşabileceğiniz bir rehber."
-          link="https://acik-kaynak.org/"
+          title="JSTANBUL"
+          description="JavaScript ve ilintili teknolojiler ile ilgili kullanıcı topluluğu."
+          link="http://jstanbul.org/"
+        />
+        <Card
+          tags={["topluluk"]}
+          title="JStanbul"
+          description="İzmir yerel geliştirici topluluğu."
+          link="https://devizmir.com/"
         />
         <Card
           tags={["topluluk"]}
