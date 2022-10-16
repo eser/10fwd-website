@@ -31,3 +31,4 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: 10fwd-website
           directory: out
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
