@@ -37,7 +37,7 @@
             @apply flex flex-wrap -mb-px text-sm font-medium text-center text-slate-500;
 
             & > li {
-              @apply mr-2;
+              @apply mr-2 cursor-pointer;
 
               & > a {
                 @apply inline-flex py-4 pr-10 rounded-t-lg border-b-2 border-transparent text-slate-500 border-slate-200 hover:text-slate-600 hover:border-slate-300 hover:no-underline;

@@ -1,3 +1,4 @@
+import Image from "next/future/image";
 import { Conditional } from "../react/conditional";
 import styles from "./index.module.css";
 
@@ -20,13 +21,19 @@ const Card = (props: CardProps) => {
         <Conditional
           if={props.imageUri !== undefined}
           then={
-            <img
-              className={styles.image}
+            <Image
               src={props.imageUri}
               alt={props.imageAltText}
+              width={376}
+              height={160}
+              className={styles.image}
             />
           }
-          otherwise={<div className={styles["image-placeholder"]}>{props.imageAltText}</div>}
+          otherwise={
+            <div className={styles["image-placeholder"]}>
+              {props.imageAltText}
+            </div>
+          }
         />
         <h5 className={styles.title}>
           {props.title}

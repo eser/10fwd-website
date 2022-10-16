@@ -38,3 +38,6 @@ out/
 
 # typescript
 *.tsbuildinfo
+
+# Contentlayer
+.contentlayer

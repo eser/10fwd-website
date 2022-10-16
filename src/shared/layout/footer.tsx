@@ -42,13 +42,17 @@ const Footer = (props: FooterProps) => {
         </a>
 
         <div className={styles.nav}>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/acikkaynak/acikkaynak/blob/development/CODE_OF_CONDUCT.md"
-          >
-            topluluk sözleşmesi
-          </a>
+        <Link href="/code-of-conduct">
+            <a rel="noopener noreferrer">
+              topluluk sözleşmesi
+            </a>
+          </Link>
+          <div className={styles.vr}></div>
+          <Link href="/about">
+            <a rel="noopener noreferrer">
+              hakkında
+            </a>
+          </Link>
           <div className={styles.vr}></div>
           <a
             rel="noopener noreferrer"
