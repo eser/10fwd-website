@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 
 interface CardProps {
   tags: string[];
-  imageUri: string;
+  imageUri?: string;
   title: string;
   description: string;
   link: string;
