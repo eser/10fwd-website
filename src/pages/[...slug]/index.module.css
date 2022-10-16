@@ -16,6 +16,14 @@
         @apply mt-12;
       }
 
+      ul {
+        @apply list-disc list-inside;
+      }
+
+      strong {
+        @apply font-semibold;
+      }
+
       p {
         @apply leading-relaxed text-justify mb-5;
       }

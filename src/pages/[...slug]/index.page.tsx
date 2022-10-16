@@ -38,9 +38,9 @@ const StaticPage: CustomPage = function StaticPage(props: StaticPageProps) {
       <article className={styles.article}>
         <div className={styles.page}>
           <h1>{props.staticPage.title}</h1>
-          <time dateTime={date}>
+          {/* <time dateTime={date}>
             {date}
-          </time>
+          </time> */}
           <div
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: props.staticPage.body.html }}

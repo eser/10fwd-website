@@ -42,6 +42,18 @@ const Footer = (props: FooterProps) => {
         </a>
 
         <div className={styles.nav}>
+          <Link href="/" passHref>
+            <a rel="noopener noreferrer">
+              girişimler
+            </a>
+          </Link>
+          <div className={styles.vr} />
+          <Link href="/services" passHref>
+            <a rel="noopener noreferrer">
+              meta-topluluk ne sunuyor?
+            </a>
+          </Link>
+          <div className={styles.vr} />
           <Link href="/code-of-conduct" passHref>
             <a rel="noopener noreferrer">
               topluluk sözleşmesi

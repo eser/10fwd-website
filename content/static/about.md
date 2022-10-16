@@ -3,30 +3,6 @@ title: Hakkında
 date: 2022-08-21
 ---
 
-## Özet
-
-10forward meta-topluluğu Türkiye'deki ve Türkçe konuşan geliştiricilerin
-oluşturduğu ekosistemin lokomotifi olmak, topluluklar ve içerik oluşturup,
-geliştirici ekosistemine katkıda bulunmak, topluluğu motive etmek, farkındalık
-aşılamak ve engelleri ortadan kaldırmak amacıyla kurulmuştur.
-
-Bugün yürüttüğümüz faaliyetler içerik üretmek, bir meta-topluluk şemsiyesi
-altında projeleri - paydaşları - toplulukları bir araya getirmek, yeni kişi,
-kuruluşları ve toplulukları ekosistemin içerisine çekmek, yeni topluluklar
-oluşturmak, etkinlikleri desteklemek ve yardımlaşmak olarak özetleyebiliriz.
-
-## Peki, Meta-Topluluk Nedir?
-
-Diğer toplulukların oluşumuna ve devamlılığına destek olan, toplulukların
-birbirleriyle iletişimini arttırması, güç birliği yapmasını amaçlayan üst
-topluluklar "meta-topluluk" olarak tanımlanabilir. Bu anlamda meta-topluluk
-kavramını bir şemsiyeye benzetebiliriz.
-
-Farklı topluluk ve disiplinlerin yaşadığı lojistik eksiklikler (örneğin
-sponsorluk eksikliği, yer eksikliği, konuşmacı eksikliği, organizasyon eksikliği
-v.b.) ve bu eksikliklerin toplulukların devamlılığını tehdit etmesi gibi
-durumları ortadan kaldırmak meta-toplulukların amacıdır.
-
 ## Misyon
 
 10forward ismini Star Trek Next Generation'da USS Enterprise içerisinde "10"
@@ -58,3 +34,11 @@ disiplinini aşması nedeniyle 2022 yılında "10forward" isminin çatısı alt�
 girişimleri toplamayı hedefledik.
 
 Bugün artık 10forward ismi ile misyonumuzu sürdürüyoruz.
+
+## Katkı Sunanlar
+
+- **Eser Özvataf**: Fikir, networking, altyapı, tasarım, içerik
+- **Fatih Kadir Akın**: Fikir, networking
+- **Arda Kılıçdağı**: Moderasyon
+- **Mehmet Ali Peker**: Moderasyon
+- **Atakan Ermiş**: Altyapı
