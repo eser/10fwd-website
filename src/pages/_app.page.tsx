@@ -8,7 +8,7 @@ const components = {
   // h1: Header
 };
 
-const CustomApp = function CustomApp(appProps: CustomAppProps) {
+const CustomApp = (appProps: CustomAppProps) => {
   return (
     <Layout appProps={appProps}>
       <DefaultSeo

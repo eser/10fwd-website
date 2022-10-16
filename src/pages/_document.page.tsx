@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from "next/document";
 
-const CustomDocument = function CustomDocument() {
+const CustomDocument = () => {
   return (
     <Html lang="tr-TR">
       <Head />

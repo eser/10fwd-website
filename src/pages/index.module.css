@@ -1,28 +1,35 @@
 .hero-section {
-  background: url('./background.svg') #F4F4F4;
-  @apply bg-cover bg-no-repeat;
+  @apply bg-[url('./background.svg')] bg-cover bg-no-repeat bg-[#F4F4F4];
 
   .inner {
-    @apply mx-auto container flex flex-col justify-center lg:flex-row lg:justify-between p-2 pb-8 lg:p-12;
+    @apply mx-auto container flex flex-col lg:flex-row lg:justify-between p-2 pb-8 lg:p-12 lg:h-[30em] lg:bg-[url('./round-of-people.svg')] bg-contain bg-right bg-no-repeat;
 
-    .left-side {
-      @apply flex flex-col justify-center lg:max-w-md xl:max-w-lg;
+    .content {
+      @apply flex flex-col justify-center lg:max-w-xl xl:max-w-3xl;
 
       img {
-        @apply object-contain w-auto h-auto;
+        @apply object-contain w-auto;
       }
 
       p {
-        @apply text-base leading-relaxed text-justify;
+        @apply text-base leading-relaxed text-justify lg:text-lg xl:text-xl;
       }
     }
+  }
+}
 
-    .right-side {
-      @apply hidden lg:block;
+.content-section {
+  @apply p-8;
 
-      img {
-        @apply object-contain w-auto h-auto;
-      }
+  .inner {
+    @apply mx-auto container;
+
+    h2 {
+      @apply my-6 text-4xl text-slate-600;
+    }
+
+    .cards {
+      @apply mb-16 grid grid-cols-none md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-2;
     }
   }
 }

@@ -9,7 +9,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const Layout = function Layout(props: LayoutProps) {
+const Layout = (props: LayoutProps) => {
   return (
     <>
       <Head>

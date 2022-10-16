@@ -1,7 +1,7 @@
-const nextRouterQueryParam = function nextRouterQueryParam(
+const nextRouterQueryParam = (
   paramValue: string | string[] | undefined,
   defaultValue?: string,
-) {
+) => {
   if (paramValue === undefined) {
     return defaultValue;
   }
