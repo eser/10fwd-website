@@ -1,7 +1,10 @@
 on:
   push:
     branches:
-      - master
+      - "**"
+  pull_request:
+    branches:
+      - "**"
 
 jobs:
   deploy:
@@ -30,5 +33,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: 10fwd-website
+          branch: ${{ github.ref_name }}
           directory: out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
