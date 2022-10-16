@@ -1,12 +1,21 @@
 .article {
-  @apply mx-auto container max-w-4xl sm:py-12 lg:py-24;
+  @apply mx-auto container text-lg 2xl:text-xl max-w-4xl sm:py-4 lg:py-6;
 
   .page {
     time {
-      @apply block text-xs text-gray-600 mb-2;
+      @apply block text-xs text-gray-600 mb-10;
     }
 
     .content {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        @apply mt-12;
+      }
+
       p {
         @apply leading-relaxed text-justify mb-5;
       }

@@ -10,7 +10,7 @@ const Footer = (props: FooterProps) => {
   return (
     <footer className={styles.footer}>
       <div className={styles["footer-inner"]}>
-        <Link href="/">
+        <Link href="/" passHref>
           <a>
             <Image
               src={LogoImage}
@@ -42,18 +42,18 @@ const Footer = (props: FooterProps) => {
         </a>
 
         <div className={styles.nav}>
-        <Link href="/code-of-conduct">
+          <Link href="/code-of-conduct" passHref>
             <a rel="noopener noreferrer">
               topluluk sözleşmesi
             </a>
           </Link>
-          <div className={styles.vr}></div>
-          <Link href="/about">
+          <div className={styles.vr} />
+          <Link href="/about" passHref>
             <a rel="noopener noreferrer">
               hakkında
             </a>
           </Link>
-          <div className={styles.vr}></div>
+          <div className={styles.vr} />
           <a
             rel="noopener noreferrer"
             target="_blank"

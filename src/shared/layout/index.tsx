@@ -52,8 +52,8 @@ const Layout = (props: LayoutProps) => {
             <div className={styles.inner}>
               <div className={styles["tab-bar"]}>
                 <ul>
-                  <Link href="/">
-                    <li className={pathname === "/" ? styles["active"] : ""}>
+                  <li className={pathname === "/" ? styles["active"] : ""}>
+                    <Link href="/" passHref>
                       <a aria-current="page">
                         <svg
                           aria-hidden="true"
@@ -64,14 +64,14 @@ const Layout = (props: LayoutProps) => {
                           <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                         </svg>Girişimler
                       </a>
-                    </li>
-                  </Link>
-                  <Link href="/code-of-conduct">
-                    <li
-                      className={pathname === "/code-of-conduct"
-                        ? styles["active"]
-                        : ""}
-                    >
+                    </Link>
+                  </li>
+                  <li
+                    className={pathname === "/code-of-conduct"
+                      ? styles["active"]
+                      : ""}
+                  >
+                    <Link href="/code-of-conduct" passHref>
                       <a>
                         <svg
                           aria-hidden="true"
@@ -87,12 +87,12 @@ const Layout = (props: LayoutProps) => {
                           />
                         </svg>Topluluk Sözleşmesi
                       </a>
-                    </li>
-                  </Link>
-                  <Link href="/about">
-                    <li
-                      className={pathname === "/about" ? styles["active"] : ""}
-                    >
+                    </Link>
+                  </li>
+                  <li
+                    className={pathname === "/about" ? styles["active"] : ""}
+                  >
+                    <Link href="/about" passHref>
                       <a>
                         <svg
                           aria-hidden="true"
@@ -107,8 +107,8 @@ const Layout = (props: LayoutProps) => {
                           />
                         </svg>Hakkında
                       </a>
-                    </li>
-                  </Link>
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

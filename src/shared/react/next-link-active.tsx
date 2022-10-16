@@ -51,7 +51,7 @@ const ActiveLink = ({
   ]);
 
   return (
-    <Link {...props}>
+    <Link {...props} passHref>
       {React.cloneElement(child, {
         className: className || null,
       })}
