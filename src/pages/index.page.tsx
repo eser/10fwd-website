@@ -6,11 +6,11 @@ import styles from "./index.module.css";
 const Home: CustomPage = () => {
   return (
     <>
-      <NextSeo />
+      <NextSeo description="Yazılım geliştiricilerine yönelik bir meta-topluluk." />
 
       <div className={styles["cards"]}>
         <Card
-          tags={["mecra"]}
+          tags={["desteklenen mecra"]}
           title="opencast.co"
           imageUri="/covers/opencast-logo.svg"
           imageAltText="opencast.co"
@@ -18,7 +18,7 @@ const Home: CustomPage = () => {
           link="https://opencast.co/"
         />
         <Card
-          tags={["mecra"]}
+          tags={["desteklenen mecra"]}
           title="açık-kaynak.org"
           imageUri="/covers/acikkaynak-logo.svg"
           imageAltText="acik-kaynak.org"
@@ -26,7 +26,7 @@ const Home: CustomPage = () => {
           link="https://acik-kaynak.org/"
         />
         <Card
-          tags={["topluluk"]}
+          tags={["desteklenen topluluk"]}
           title="JSTANBUL"
           imageUri="/covers/jstanbul-logo.svg"
           imageAltText="jstanbul.org"
@@ -34,7 +34,7 @@ const Home: CustomPage = () => {
           link="http://jstanbul.org/"
         />
         <Card
-          tags={["topluluk"]}
+          tags={["desteklenen topluluk"]}
           title="Dev İzmir"
           imageUri="/covers/devizmir-logo.svg"
           imageAltText="devizmir.com"
@@ -42,7 +42,7 @@ const Home: CustomPage = () => {
           link="https://devizmir.com/"
         />
         <Card
-          tags={["kişisel içerik üretimi"]}
+          tags={["desteklenen içerik üretimi"]}
           title="Eser Özvataf YouTube"
           imageUri="/covers/eserozvataf-youtube-logo.svg"
           imageAltText="youtube.com/EserOzvataf"
@@ -50,7 +50,7 @@ const Home: CustomPage = () => {
           link="https://youtube.com/EserOzvataf"
         />
         <Card
-          tags={["kişisel içerik üretimi"]}
+          tags={["desteklenen içerik üretimi"]}
           title="Eser Özvataf Blog"
           imageUri="/covers/eserozvataf-blog-logo.svg"
           imageAltText="eser.dev"

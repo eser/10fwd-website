@@ -39,10 +39,10 @@ const Layout = (props: LayoutProps) => {
                   priority={true}
                 />
                 <p>
-                  2015&apos;ten bu yana topluluklar oluşturup, geliştirici
-                  ekosistemine katkıda bulunmak, topluluğu motive etmek,
-                  farkındalık aşılamak ve engelleri ortadan kaldırmak için
-                  çalışıyoruz.
+                  2015&apos;ten bu yana bir meta-topluluk olarak topluluklar ve
+                  içerik oluşturup, geliştirici ekosistemine katkıda bulunmak,
+                  topluluğu motive etmek, farkındalık aşılamak ve engelleri
+                  ortadan kaldırmak için çalışıyoruz.
                 </p>
               </div>
             </div>
