@@ -1,10 +1,12 @@
 import { type GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { type CustomPage } from "@webclient/pages/_app.types";
+import { GuideCard } from "@webclient/shared/guide-card/index";
 import { allStaticPages, StaticPage } from "@contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer/hooks";
 import styles from "./index.module.css";
 
-const getStaticPaths = async () => {
+const getStaticPaths = () => {
   const paths = allStaticPages.map((staticPage) => staticPage.url);
 
   return {
@@ -13,9 +15,12 @@ const getStaticPaths = async () => {
   };
 };
 
-const getStaticProps: GetStaticProps = async ({ params }) => {
+const getStaticProps: GetStaticProps = ({ params }) => {
+  const slug_ = params?.slug ?? "/";
+  const slug = Array.isArray(slug_) ? slug_.join("/") : slug_;
+
   const staticPage = allStaticPages.find((staticPage) =>
-    staticPage._raw.flattenedPath === `static/${params?.slug}`
+    staticPage._raw.flattenedPath === `static/${slug}`
   );
 
   return {
@@ -29,10 +34,15 @@ interface StaticPageComponentProps {
   staticPage: StaticPage;
 }
 
+const mdxComponents = {
+  GuideCard,
+};
+
 const StaticPageComponent: CustomPage<StaticPageComponentProps> = (
   props: StaticPageComponentProps,
 ) => {
   const date = new Date(props.staticPage.date).toLocaleString("tr-TR");
+  const MDXContent = useMDXComponent(props.staticPage.body.code);
 
   return (
     <>
@@ -41,15 +51,14 @@ const StaticPageComponent: CustomPage<StaticPageComponentProps> = (
       <article className={styles.article}>
         <div className={styles.page}>
           <h1>{props.staticPage.title}</h1>
-          {
-            /* <time dateTime={date}>
-            {date}
-          </time> */
-          }
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: props.staticPage.body.html }}
-          />
+          <div className={styles["content-meta"]}>
+            Okuma Süresi: {props.staticPage.readingTime.minutes} dakika
+            <br />
+            Yayınlanma Tarihi: <time dateTime={date}>{date}</time>
+          </div>
+          <div className={styles.content}>
+            <MDXContent components={mdxComponents} />
+          </div>
         </div>
       </article>
     </>

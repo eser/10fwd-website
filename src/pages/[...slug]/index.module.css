@@ -1,31 +1,52 @@
 .article {
-  @apply mx-auto container text-lg 2xl:text-xl max-w-4xl sm:py-4 lg:py-6;
+  @apply mx-auto container text-lg 2xl:text-xl max-w-4xl sm:pb-4 lg:pb-6;
 
   .page {
-    time {
-      @apply block text-xs text-gray-600 mb-10;
+    h1 {
+      @apply text-4xl mb-8;
+    }
+
+    h2 {
+      @apply text-3xl mb-6;
+    }
+
+    h3 {
+      @apply text-2xl mb-4;
+    }
+
+    h4 {
+      @apply text-xl mb-2;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply mt-12;
+    }
+
+    .content-meta {
+      @apply hidden text-xs text-gray-600 mb-10;
     }
 
     .content {
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        @apply mt-12;
-      }
-
       ul {
         @apply list-disc list-inside;
       }
 
-      strong {
-        @apply font-semibold;
+      p {
+        @apply text-justify;
       }
 
-      p {
-        @apply leading-relaxed text-justify mb-5;
+      p,
+      ul {
+        @apply leading-relaxed text-base text-justify mb-8;
+      }
+
+      strong {
+        @apply font-semibold;
       }
     }
   }

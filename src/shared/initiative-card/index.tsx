@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Conditional } from "../react/conditional";
+import { Conditional } from "@webclient/shared/react/conditional";
 import styles from "./index.module.css";
 
-interface CardProps {
+interface InitiativeCardProps {
   tags: string[];
   imageUri?: string;
   imageAltText: string;
@@ -11,7 +11,7 @@ interface CardProps {
   link: string;
 }
 
-const Card = (props: CardProps) => {
+const InitiativeCard = (props: InitiativeCardProps) => {
   return (
     <a className={styles.card} href={props.link}>
       <div className={styles.inner}>
@@ -21,13 +21,14 @@ const Card = (props: CardProps) => {
         <Conditional
           if={props.imageUri !== undefined}
           then={
-            <Image
-              src={props.imageUri!}
-              alt={props.imageAltText}
-              width={376}
-              height={160}
-              className={styles.image}
-            />
+            <div className={styles.image}>
+              <Image
+                src={props.imageUri!}
+                alt={props.imageAltText}
+                width={376}
+                height={160}
+              />
+            </div>
           }
           otherwise={
             <div className={styles["image-placeholder"]}>
@@ -64,4 +65,4 @@ const Card = (props: CardProps) => {
   );
 };
 
-export { Card, Card as default };
+export { InitiativeCard, InitiativeCard as default };

@@ -9,7 +9,11 @@
     }
 
     & > .image {
-      @apply flex-none px-4 h-[10em];
+      @apply flex items-center justify-center px-4 h-[10em];
+
+      & > img {
+        @apply w-auto h-auto;
+      }
     }
 
     & > .image-placeholder {

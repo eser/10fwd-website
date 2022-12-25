@@ -1,0 +1,39 @@
+.card {
+  @apply hover:no-underline;
+
+  & > .inner {
+    @apply relative bg-white rounded-l-lg rounded-br-lg border border-slate-200 shadow-md;
+
+    & > .image {
+      @apply flex items-center justify-center p-4;
+
+      & > img {
+        @apply w-auto h-full;
+      }
+    }
+
+    & > .text {
+      @apply absolute top-0 w-full h-full flex flex-col items-center justify-center p-8 md:p-0;
+
+      &.left {
+        @apply md:items-start;
+      }
+
+      &.right {
+        @apply md:items-end;
+      }
+
+      & > .title, & > .description {
+        @apply text-center break-words text-ellipsis bg-blue-400 bg-opacity-90 md:bg-opacity-100 text-white;
+      }
+
+      & > .title {
+        @apply py-1 px-5 text-2xl sm:py-2 sm:text-3xl md:py-3 md:text-4xl lg:text-5xl mb-0 font-bold tracking-tight;
+      }
+
+      & > .description {
+        @apply pb-1 px-6 text-base sm:text-lg md:text-xl lg:text-2xl font-normal;
+      }
+    }
+  }
+}

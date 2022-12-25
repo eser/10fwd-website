@@ -10,11 +10,12 @@ const Footer = (props: FooterProps) => {
   return (
     <footer className={styles.footer}>
       <div className={styles["footer-inner"]}>
-        <Link href="/" passHref>
+        <Link href="/">
           <Image
             src={LogoImage}
             alt="10forward logo"
             className={styles.logo}
+            priority={true}
           />
         </Link>
         <p>
@@ -40,20 +41,20 @@ const Footer = (props: FooterProps) => {
         </a>
 
         <div className={styles.nav}>
-          <Link href="/" rel="noopener noreferrer" passHref>
+          <Link href="/" rel="noopener noreferrer">
             girişimler
           </Link>
           <div className={styles.vr} />
-          <Link href="/services" rel="noopener noreferrer" passHref>
-            meta-topluluk ne sunuyor?
+          <Link href="/about/" rel="noopener noreferrer">
+            10forward nedir?
           </Link>
           <div className={styles.vr} />
-          <Link href="/code-of-conduct" rel="noopener noreferrer" passHref>
-            topluluk sözleşmesi
+          <Link href="/meta-community/" rel="noopener noreferrer">
+            meta-topluluk esaslarımız
           </Link>
           <div className={styles.vr} />
-          <Link href="/about" rel="noopener noreferrer" passHref>
-            hakkında
+          <Link href="/agreements/" rel="noopener noreferrer">
+            topluluk sözleşmeleri
           </Link>
           <div className={styles.vr} />
           <a

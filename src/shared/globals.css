@@ -10,22 +10,6 @@
     @apply w-full;
   }
 
-  h1 {
-    @apply text-4xl mb-8;
-  }
-
-  h2 {
-    @apply text-3xl mb-6;
-  }
-
-  h3 {
-    @apply text-2xl mb-4;
-  }
-
-  h4 {
-    @apply text-xl mb-2;
-  }
-
   a {
     @apply text-sky-600 hover:underline underline-offset-4;
   }
@@ -44,3 +28,9 @@
 }
 
 @tailwind utilities;
+
+.embed-youtube {
+  iframe {
+    @apply w-full h-max	aspect-video mb-10;
+  }
+}

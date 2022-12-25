@@ -24,8 +24,17 @@ const nextConfig = {
     // runtime: "experimental-edge",
     esmExternals: true,
   },
+
+  webpack: (config, { isServer }) => {
+    // Fixes npm packages that depend on `fs` module
+    if (!isServer) {
+      config.resolve.fallback = { async_hooks: false, fs: false };
+    }
+
+    return config;
+  },
 };
 
 const withMiddlewares = withContentlayer(nextConfig);
 
-export default withMiddlewares;
+export { withMiddlewares as default };
