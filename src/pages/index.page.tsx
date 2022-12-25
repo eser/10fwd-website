@@ -3,12 +3,12 @@ import { type CustomPage } from "@webclient/pages/_app.types";
 import { Card } from "@webclient/shared/card/index";
 import styles from "./index.module.css";
 
-const Home: CustomPage = () => {
+const HomePageComponent: CustomPage<never> = () => {
   return (
     <>
       <NextSeo description="Yazılım geliştiricilerine yönelik bir meta-topluluk." />
 
-      <div className={styles["cards"]}>
+      <div className={styles.cards}>
         <Card
           tags={["desteklenen mecra"]}
           title="opencast.co"
@@ -118,4 +118,4 @@ const Home: CustomPage = () => {
   );
 };
 
-export { Home, Home as default };
+export { HomePageComponent, HomePageComponent as default };

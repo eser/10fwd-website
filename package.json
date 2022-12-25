@@ -39,27 +39,27 @@
     "http:preview": "cd out && http-server"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.12",
-    "contentlayer": "^0.2.8",
+    "@heroicons/react": "^2.0.13",
+    "contentlayer": "^0.2.9",
     "markdown-wasm": "^1.2.0",
-    "next": "12.3.1",
-    "next-contentlayer": "^0.2.8",
-    "next-seo": "^5.6.0",
+    "next": "13.1.1",
+    "next-contentlayer": "^0.2.9",
+    "next-seo": "^5.15.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.7",
-    "@types/node": "18.11.0",
-    "@types/react": "18.0.21",
+    "@tailwindcss/typography": "^0.5.8",
+    "@types/node": "^18.11.17",
+    "@types/react": "^18.0.26",
     "adr-tool": "^0.3.0",
-    "autoprefixer": "^10.4.12",
-    "eslint": "8.25.0",
-    "eslint-config-next": "12.3.1",
-    "husky": "^8.0.1",
-    "postcss": "^8.4.18",
-    "tailwindcss": "^3.1.8",
-    "typescript": "4.8.4"
+    "autoprefixer": "^10.4.13",
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.1.1",
+    "husky": "^8.0.2",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
+    "typescript": "4.9.4"
   },
   "husky": {
     "hooks": {

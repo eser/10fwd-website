@@ -2,8 +2,8 @@ import { withContentlayer } from "next-contentlayer";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  // swcMinify: false,
+  reactStrictMode: true,
+  swcMinify: true,
 
   pageExtensions: [
     "page.tsx",
@@ -18,9 +18,10 @@ const nextConfig = {
 
   trailingSlash: true,
   productionBrowserSourceMaps: true,
-  images: { unoptimized: true },
+  // images: { unoptimized: true },
 
   experimental: {
+    runtime: "experimental-edge",
     esmExternals: true,
   },
 };

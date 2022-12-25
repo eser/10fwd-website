@@ -7,12 +7,13 @@ interface ConditionalProps {
   otherwise?: React.ReactNode;
 }
 
-const Conditional = (props: ConditionalProps): JSX.Element => {
+const Conditional = (props: ConditionalProps): JSX.Element | null => {
   let result;
 
   if (props.if) {
     result = props.then ?? props.children;
-  } else {
+  }
+  else {
     result = props.otherwise;
   }
 

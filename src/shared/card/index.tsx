@@ -1,4 +1,4 @@
-import Image from "next/future/image";
+import Image from "next/image";
 import { Conditional } from "../react/conditional";
 import styles from "./index.module.css";
 
@@ -22,7 +22,7 @@ const Card = (props: CardProps) => {
           if={props.imageUri !== undefined}
           then={
             <Image
-              src={props.imageUri}
+              src={props.imageUri!}
               alt={props.imageAltText}
               width={376}
               height={160}
@@ -55,8 +55,7 @@ const Card = (props: CardProps) => {
                 fillRule="evenodd"
                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
                 clipRule="evenodd"
-              >
-              </path>
+              />
             </svg>
           </div>
         </div>

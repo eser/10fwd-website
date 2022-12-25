@@ -1,9 +1,10 @@
+import { type GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
 import { type CustomPage } from "@webclient/pages/_app.types";
 import { allStaticPages, StaticPage } from "@contentlayer/generated";
 import styles from "./index.module.css";
 
-const getStaticPaths = async function getStaticPaths() {
+const getStaticPaths = async () => {
   const paths = allStaticPages.map((staticPage) => staticPage.url);
 
   return {
@@ -12,9 +13,9 @@ const getStaticPaths = async function getStaticPaths() {
   };
 };
 
-const getStaticProps = async function getStaticProps({ params }) {
+const getStaticProps: GetStaticProps = async ({ params }) => {
   const staticPage = allStaticPages.find((staticPage) =>
-    staticPage._raw.flattenedPath === `static/${params.slug}`
+    staticPage._raw.flattenedPath === `static/${params?.slug}`
   );
 
   return {
@@ -24,11 +25,13 @@ const getStaticProps = async function getStaticProps({ params }) {
   };
 };
 
-interface StaticPageProps {
+interface StaticPageComponentProps {
   staticPage: StaticPage;
 }
 
-const StaticPage: CustomPage = function StaticPage(props: StaticPageProps) {
+const StaticPageComponent: CustomPage<StaticPageComponentProps> = (
+  props: StaticPageComponentProps,
+) => {
   const date = new Date(props.staticPage.date).toLocaleString("tr-TR");
 
   return (
@@ -38,9 +41,11 @@ const StaticPage: CustomPage = function StaticPage(props: StaticPageProps) {
       <article className={styles.article}>
         <div className={styles.page}>
           <h1>{props.staticPage.title}</h1>
-          {/* <time dateTime={date}>
+          {
+            /* <time dateTime={date}>
             {date}
-          </time> */}
+          </time> */
+          }
           <div
             className={styles.content}
             dangerouslySetInnerHTML={{ __html: props.staticPage.body.html }}
@@ -51,4 +56,10 @@ const StaticPage: CustomPage = function StaticPage(props: StaticPageProps) {
   );
 };
 
-export { getStaticPaths, getStaticProps, StaticPage, StaticPage as default };
+export {
+  getStaticPaths,
+  getStaticProps,
+  StaticPageComponent,
+  StaticPageComponent as default,
+  type StaticPageComponentProps,
+};
