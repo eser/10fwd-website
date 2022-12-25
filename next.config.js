@@ -18,10 +18,10 @@ const nextConfig = {
 
   trailingSlash: true,
   productionBrowserSourceMaps: true,
-  // images: { unoptimized: true },
+  images: { unoptimized: true },
 
   experimental: {
-    runtime: "experimental-edge",
+    // runtime: "experimental-edge",
     esmExternals: true,
   },
 };
