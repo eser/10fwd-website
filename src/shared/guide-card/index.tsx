@@ -27,7 +27,7 @@ const GuideCard = (props: GuideCardProps) => {
             {props.title}
           </h3>
           <p className={styles.description}>
-            {props.description}
+            <span>{props.description}</span>
           </p>
         </div>
       </div>

@@ -2,10 +2,10 @@
   @apply hover:no-underline;
 
   & > .inner {
-    @apply relative bg-white rounded-l-lg rounded-br-lg border border-slate-200 shadow-md;
+    @apply relative bg-white rounded-l-lg rounded-br-lg border border-slate-200 shadow-md mb-10;
 
     & > .image {
-      @apply flex items-center justify-center p-4;
+      @apply flex items-center justify-center p-8;
 
       & > img {
         @apply w-auto h-full;
@@ -17,14 +17,25 @@
 
       &.left {
         @apply md:items-start;
+
+        & > .title,
+        & > .description {
+          @apply text-center md:text-left;
+        }
       }
 
       &.right {
         @apply md:items-end;
+
+        & > .title,
+        & > .description {
+          @apply text-center md:text-right;
+        }
       }
 
-      & > .title, & > .description {
-        @apply text-center break-words text-ellipsis bg-blue-400 bg-opacity-90 md:bg-opacity-100 text-white;
+      & > .title,
+      & > .description span {
+        @apply break-words text-ellipsis bg-blue-400 bg-opacity-100 text-white box-decoration-clone px-4 py-2 leading-7 lg:leading-9;
       }
 
       & > .title {
@@ -32,7 +43,7 @@
       }
 
       & > .description {
-        @apply pb-1 px-6 text-base sm:text-lg md:text-xl lg:text-2xl font-normal;
+        @apply pb-1 text-base sm:text-lg md:text-xl md:max-w-xl lg:text-2xl font-normal;
       }
     }
   }
