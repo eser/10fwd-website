@@ -18,7 +18,7 @@
     }
 
     .nav {
-      @apply mt-4 flex items-center justify-center space-x-4 text-sm font-semibold leading-6;
+      @apply mt-4 flex flex-col sm:flex-row flex-wrap items-center justify-center space-x-4 text-sm font-semibold leading-6;
 
       a {
         @apply text-slate-700;
@@ -29,7 +29,7 @@
       }
 
       .vr {
-        @apply h-4 w-px bg-slate-500/20;
+        @apply h-4 w-px bg-slate-500/20 hidden sm:block;
         /* unfortunately tailwind doesn't support bg-slate-200/20 in nested css */
         :global(.dark) & {
           @apply bg-slate-200/20;

@@ -46,11 +46,11 @@ const Footer = (props: FooterProps) => {
           </Link>
           <div className={styles.vr} />
           <Link href="/about/" rel="noopener noreferrer">
-            10forward nedir?
+            hakkımızda
           </Link>
           <div className={styles.vr} />
-          <Link href="/meta-community/" rel="noopener noreferrer">
-            meta-topluluk esaslarımız
+          <Link href="/guide/" rel="noopener noreferrer">
+            rehber
           </Link>
           <div className={styles.vr} />
           <Link href="/agreements/" rel="noopener noreferrer">
