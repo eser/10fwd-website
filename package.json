@@ -29,14 +29,16 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "cleanup": "rm -rf yarn.lock package-lock.json node_modules/ .next/",
+    "cleanup": "rm -rf yarn.lock package-lock.json node_modules/ .next/ && yarn cache clean && yarn install",
     "build": "next build",
     "dev": "next dev",
     "export": "next build && next export",
     "lint": "next lint",
     "adr": "adr-tool",
     "prepare": "husky install",
-    "http:preview": "cd out && http-server"
+    "http:preview": "cd out && http-server",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
@@ -55,21 +57,27 @@
     "rehype-code-titles": "^1.1.0",
     "rehype-prism-plus": "^1.5.0",
     "rehype-slug": "^5.1.0",
-    "remark-gfm": "^3.0.1",
-    "supertokens-auth-react": "latest",
-    "supertokens-node": "latest"
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
+    "@jest/expect": "^29.3.1",
     "@tailwindcss/typography": "^0.5.8",
-    "@types/node": "^18.11.17",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@types/jest": "^29.2.5",
+    "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "adr-tool": "^0.3.0",
     "autoprefixer": "^10.4.13",
-    "eslint": "8.30.0",
+    "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "husky": "^8.0.2",
+    "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
+    "jest-node-exports-resolver": "^1.1.6",
+    "husky": "^8.0.3",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4",
+    "ts-jest": "^29.0.3",
     "typescript": "4.9.4"
   },
   "husky": {

@@ -424,7 +424,7 @@
     "yield-star-spacing": ["error", "after"],
 
     "block-spacing": ["error", "always"],
-    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": true }], // used to be stroustrup
     "comma-dangle": ["error", "always-multiline"],
     "comma-spacing": ["error", { "before": false, "after": true }],
     "computed-property-spacing": ["error", "never"],

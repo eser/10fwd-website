@@ -12,8 +12,7 @@ const Conditional = (props: ConditionalProps): JSX.Element | null => {
 
   if (props.if) {
     result = props.then ?? props.children;
-  }
-  else {
+  } else {
     result = props.otherwise;
   }
 

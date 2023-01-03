@@ -18,7 +18,16 @@ Thumbs.db
 node_modules/
 
 # test coverage data
-coverage/
+etc/coverage/
+out/
+build/
+
+# next.js and vercel
+.next/
+.vercel/
+
+# Contentlayer
+.contentlayer/
 
 # local API keys and secrets
 .env.local
@@ -28,16 +37,12 @@ coverage/
 *.pem
 *.swp
 
-# hot updates
-dist/*.hot-update.*
-build/
-
-# next.js
-.next/
-out/
-
-# typescript
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 *.tsbuildinfo
 
-# Contentlayer
-.contentlayer
+# hot updates
+dist/*.hot-update.*

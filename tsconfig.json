@@ -28,7 +28,6 @@
   },
   "include": [
     "next-env.d.ts",
-    "src/interfaces.d.ts",
     "**/*.js",
     "**/*.jsx",
     "**/*.ts",
