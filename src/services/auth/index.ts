@@ -6,7 +6,7 @@ import {
 
 import { registry } from "../di/registry";
 import { firebase } from "../firebase/index";
-import { createUser } from "../requests/authRequests";
+// import { createUser } from "../requests/authRequests";
 
 // interface definitions
 // ---------------------
@@ -20,19 +20,7 @@ interface AuthInterface {
   init: () => void;
 
   signInWithCustomToken: (customToken: string) => Promise<any>;
-  signInWithGoogle: () => Promise<AuthResponse>;
-  signInWithApple: () => Promise<AuthResponse>;
-  signInWithEmailAndPassword: (
-    email: string,
-    password: string,
-  ) => Promise<AuthResponse>;
-  createUserWithEmailAndPassword: (
-    email: string,
-    password: string,
-    displayName: string,
-  ) => Promise<AuthResponse>;
-  fetchSignInMethodsForEmail: (email: string) => Promise<string[]>;
-  sendPasswordResetEmail: (email: string) => Promise<any>;
+  signInWithGitHub: () => Promise<AuthResponse>;
   signOut: () => Promise<any>;
 
   onAuthStateChanged: (callback: (user: any) => void) => void;
@@ -75,7 +63,7 @@ class Auth implements AuthInterface {
     return firebaseAuth.signInWithCustomToken(this.#internalAuth, customToken);
   }
 
-  async signInWithGoogle(): Promise<AuthResponse> {
+  async signInWithGitHub(): Promise<AuthResponse> {
     // eslint-disable-next-line no-useless-catch
     try {
       const userCredential = await firebaseAuth.signInWithPopup(
@@ -92,81 +80,9 @@ class Auth implements AuthInterface {
 
       return { userCredential, additionalUserInfo };
     } catch (e) {
-      // console.error('signInWithGoogle error', e);
+      // console.error('signInWithGitHub error', e);
       throw e;
     }
-  }
-
-  async signInWithApple(): Promise<AuthResponse> {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const userCredential = await firebaseAuth.signInWithPopup(
-        this.#internalAuth,
-        new firebaseAuth.OAuthProvider("apple.com"),
-        browserPopupRedirectResolver,
-      );
-      const additionalUserInfo = getAdditionalUserInfo(userCredential);
-      const { displayName, email } = userCredential.user;
-      if (additionalUserInfo.isNewUser) {
-        await createUser(displayName, email);
-      }
-
-      return { userCredential, additionalUserInfo };
-    } catch (e) {
-      // console.error('signInWithApple error', e);
-      throw e;
-    }
-  }
-
-  async signInWithEmailAndPassword(
-    email: string,
-    password: string,
-  ): Promise<AuthResponse> {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const userCredential = await firebaseAuth.signInWithEmailAndPassword(
-        this.#internalAuth,
-        email,
-        password,
-      );
-      const additionalUserInfo = getAdditionalUserInfo(userCredential);
-
-      return { userCredential, additionalUserInfo };
-    } catch (e) {
-      // console.error('signInWithEmailAndPassword error', e);
-      throw e;
-    }
-  }
-
-  async createUserWithEmailAndPassword(
-    email: string,
-    password: string,
-    displayName: string,
-  ): Promise<AuthResponse> {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const userCredential = await firebaseAuth.createUserWithEmailAndPassword(
-        this.#internalAuth,
-        email,
-        password,
-      );
-      await firebaseAuth.updateProfile(userCredential.user, { displayName });
-      const additionalUserInfo = getAdditionalUserInfo(userCredential);
-      await createUser(displayName, email);
-
-      return { userCredential, additionalUserInfo };
-    } catch (e) {
-      // console.error('createUserWithEmailAndPassword error', e);
-      throw e;
-    }
-  }
-
-  fetchSignInMethodsForEmail(email: string): Promise<string[]> {
-    return firebaseAuth.fetchSignInMethodsForEmail(this.#internalAuth, email);
-  }
-
-  sendPasswordResetEmail(email: string): Promise<any> {
-    return firebaseAuth.sendPasswordResetEmail(this.#internalAuth, email);
   }
 
   signOut() {

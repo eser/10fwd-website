@@ -1,4 +1,5 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 import { registry } from "../di/registry";
 
@@ -18,6 +19,7 @@ const readConfigFromEnv = function readConfigFromEnv() {
     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
   };
 };
 
@@ -38,6 +40,7 @@ class Firebase implements FirebaseInterface {
 
     const config = readConfigFromEnv();
     const app = initializeApp(config);
+    const analytics = getAnalytics(app);
 
     registry.setValue("firebase", { config, app });
 
