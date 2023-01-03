@@ -23,7 +23,7 @@ Bu kod tabanında, şu anda yapım aşamasında bulunan
 - [Node.js](https://nodejs.org/)
 - [GitHub Actions](https://github.com/features/actions)
 - [adr-tool](https://github.com/keremciu/adr-tool)
-- [husky](https://typicode.github.io/husky/)
+- [pre-commit](https://pre-commit.com/)
 
 ### Çalışma Ortamını Hazırlamak
 
