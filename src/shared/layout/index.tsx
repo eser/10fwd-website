@@ -1,35 +1,21 @@
-import { type MouseEvent, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { type CustomAppProps } from "@webclient/pages/_app.types";
-import { auth } from "@webclient/services/auth/index";
-import { useAuth } from "@webclient/services/auth/use-auth";
+import { AuthContextProvider } from "@webclient/services/auth/mod";
 import { Footer } from "./footer";
 import styles from "./index.module.css";
 import logoImage from "./logo.svg";
-import githubLogoImage from "./github-logo.svg";
+import { GitHubLoginButton } from "./github-login-button";
 
 interface LayoutProps {
   appProps: CustomAppProps;
   children: ReactNode;
 }
 
-const buttonOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-  e.preventDefault();
-
-  if (auth.getUser() === null) {
-    auth.signInWithGitHub();
-    return;
-  }
-
-  auth.signOut();
-};
-
 const Layout = (props: LayoutProps) => {
-  const { isLoading, isLoggedIn, user } = useAuth();
-
   const router = useRouter();
   const pathname = (router.pathname === "/[...slug]")
     ? `/${router.query?.slug?.[0]}`
@@ -39,12 +25,8 @@ const Layout = (props: LayoutProps) => {
     return pathname === `/${section}` || pathname.startsWith(`/${section}/`);
   };
 
-  if (isLoading) {
-    return <>Loading...</>;
-  }
-
   return (
-    <>
+    <AuthContextProvider>
       <Head>
         <meta charSet="utf-8" />
         <link rel="icon" href="/favicon.ico" />
@@ -53,20 +35,7 @@ const Layout = (props: LayoutProps) => {
       <div className={styles.app}>
         <main>
           <nav className={styles["top-side"]}>
-            <button
-              type="button"
-              className={styles["login-button"]}
-              onClick={buttonOnClick}
-            >
-              <Image
-                src={githubLogoImage}
-                alt="github logo"
-                width="16"
-                height="16"
-                priority={true}
-              />
-              {isLoggedIn ? user!.displayName : "GitHub ile giriş yap"}
-            </button>
+            <GitHubLoginButton />
           </nav>
           <section className={styles["hero-section"]}>
             <div className={styles.inner}>
@@ -176,7 +145,7 @@ const Layout = (props: LayoutProps) => {
 
         <Footer />
       </div>
-    </>
+    </AuthContextProvider>
   );
 };
 

@@ -16,6 +16,8 @@ interface AuthResponse {
   error: Error | null;
 }
 
+type OnAuthStateChangedUnsubscribe = (() => void) | void;
+
 interface AuthInterface {
   init: () => void;
 
@@ -23,7 +25,9 @@ interface AuthInterface {
   signInWithGitHub: () => Promise<AuthResponse>;
   signOut: () => Promise<any>;
 
-  onAuthStateChanged: (callback: (user: unknown | null) => void) => void;
+  onAuthStateChanged: (
+    callback: (user: unknown | null) => void,
+  ) => OnAuthStateChangedUnsubscribe;
 
   getUser: () => unknown | null;
   getIdToken: () => Promise<string | null>;
@@ -93,9 +97,14 @@ class Auth implements AuthInterface {
   onAuthStateChanged(callback: (user: firebaseAuth.User | null) => void) {
     assert(this.#internalAuth !== null, "internalAuth is not initialized");
 
-    firebaseAuth.onAuthStateChanged(this.#internalAuth, (user) => {
-      callback(user);
-    });
+    const unsubscribe = firebaseAuth.onAuthStateChanged(
+      this.#internalAuth,
+      (user) => {
+        callback(user);
+      },
+    );
+
+    return (() => unsubscribe());
   }
 
   getUser() {
