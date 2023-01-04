@@ -33,6 +33,8 @@ class AuthMock extends Auth implements AuthInterface {
       () => callback(mockUser),
       500,
     );
+
+    return () => {};
   }
 
   // eslint-disable-next-line class-methods-use-this
