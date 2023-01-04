@@ -1,4 +1,4 @@
-import { type ReactNode } from "react";
+import { type MouseEvent, type ReactNode } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -16,7 +16,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const buttonOnClick = (e) => {
+const buttonOnClick = (e: MouseEvent<HTMLButtonElement>) => {
   e.preventDefault();
 
   if (auth.getUser() === null) {
@@ -53,7 +53,11 @@ const Layout = (props: LayoutProps) => {
       <div className={styles.app}>
         <main>
           <nav className={styles["top-side"]}>
-            <button type="button" className={styles["login-button"]} onClick={buttonOnClick}>
+            <button
+              type="button"
+              className={styles["login-button"]}
+              onClick={buttonOnClick}
+            >
               <Image
                 src={githubLogoImage}
                 alt="github logo"
