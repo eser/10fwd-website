@@ -1,8 +1,5 @@
+import { assert } from "../../shared/assert";
 import * as firebaseAuth from "firebase/auth";
-import {
-  browserPopupRedirectResolver,
-  getAdditionalUserInfo,
-} from "firebase/auth";
 
 import { registry } from "../di/registry";
 import { firebase } from "../firebase/index";
@@ -12,10 +9,13 @@ import { firebase } from "../firebase/index";
 // ---------------------
 
 // TODO: Handle linking accounts
-export interface AuthResponse {
-  userCredential: firebaseAuth.UserCredential;
-  additionalUserInfo: firebaseAuth.AdditionalUserInfo;
+interface AuthResponse {
+  userCredential: unknown | null;
+  oauthCredential: unknown | null;
+  additionalUserInfo: unknown | null;
+  error: Error | null;
 }
+
 interface AuthInterface {
   init: () => void;
 
@@ -23,20 +23,21 @@ interface AuthInterface {
   signInWithGitHub: () => Promise<AuthResponse>;
   signOut: () => Promise<any>;
 
-  onAuthStateChanged: (callback: (user: any) => void) => void;
+  onAuthStateChanged: (callback: (user: unknown | null) => void) => void;
 
-  getUser: () => any;
-  getIdToken: () => Promise<string>;
+  getUser: () => unknown | null;
+  getIdToken: () => Promise<string | null>;
 }
 
 // implementation (public)
 // -----------------------
 class Auth implements AuthInterface {
   hasInitCalled: boolean;
-  #internalAuth: firebaseAuth.Auth;
+  #internalAuth: firebaseAuth.Auth | null;
 
   constructor() {
     this.hasInitCalled = false;
+    this.#internalAuth = null;
   }
 
   init() {
@@ -48,11 +49,11 @@ class Auth implements AuthInterface {
 
     const { app } = registry.get("firebase");
 
-    const auth = firebaseAuth.getAuth(app);
+    const firebaseAuthObject = firebaseAuth.getAuth(app);
 
-    registry.setValue("auth", { auth });
+    registry.setValue("firebaseAuthObject", firebaseAuthObject);
 
-    this.#internalAuth = auth;
+    this.#internalAuth = firebaseAuthObject;
     // console.log('init', this.#internalAuth);
     this.hasInitCalled = true;
   }
@@ -60,46 +61,52 @@ class Auth implements AuthInterface {
   signInWithCustomToken(
     customToken: string,
   ): Promise<firebaseAuth.UserCredential> {
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
+
     return firebaseAuth.signInWithCustomToken(this.#internalAuth, customToken);
   }
 
   async signInWithGitHub(): Promise<AuthResponse> {
-    // eslint-disable-next-line no-useless-catch
-    try {
-      const userCredential = await firebaseAuth.signInWithPopup(
-        this.#internalAuth,
-        new firebaseAuth.GoogleAuthProvider(),
-        browserPopupRedirectResolver,
-      );
-      const additionalUserInfo = getAdditionalUserInfo(userCredential);
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
 
-      const { displayName, email } = userCredential.user;
-      if (additionalUserInfo.isNewUser) {
-        await createUser(displayName, email);
-      }
+    const result = await firebase.popupSignInWithGitHub(this.#internalAuth);
 
-      return { userCredential, additionalUserInfo };
-    } catch (e) {
-      // console.error('signInWithGitHub error', e);
-      throw e;
-    }
+    // userCredential.user.displayName
+    // userCredential.user.email
+    // oauthCredential.accessToken
+    // additionalUserInfo.isNewUser
+
+    return {
+      userCredential: result.userCredential,
+      oauthCredential: result.oauthCredential,
+      additionalUserInfo: result.additionalUserInfo,
+      error: result.error,
+    };
   }
 
   signOut() {
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
+
     return firebaseAuth.signOut(this.#internalAuth);
   }
 
-  onAuthStateChanged(callback: (user: firebaseAuth.User) => void) {
+  onAuthStateChanged(callback: (user: firebaseAuth.User | null) => void) {
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
+
     firebaseAuth.onAuthStateChanged(this.#internalAuth, (user) => {
       callback(user);
     });
   }
 
   getUser() {
-    return this.#internalAuth?.currentUser ?? null;
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
+
+    return this.#internalAuth.currentUser ?? null;
   }
 
-  getIdToken() {
+  async getIdToken() {
+    assert(this.#internalAuth !== null, "internalAuth is not initialized");
+
     const currentUser = this.#internalAuth.currentUser;
 
     if (currentUser === null) {
@@ -112,4 +119,11 @@ class Auth implements AuthInterface {
 
 const auth = new Auth();
 
-export { Auth, auth, auth as default, type AuthInterface, firebaseAuth };
+export {
+  Auth,
+  auth,
+  auth as default,
+  type AuthInterface,
+  type AuthResponse,
+  firebaseAuth,
+};

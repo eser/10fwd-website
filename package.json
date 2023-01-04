@@ -40,7 +40,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.13",
     "@remark-embedder/core": "^3.0.1",
     "@remark-embedder/transformer-oembed": "^3.0.0",
     "contentlayer": "^0.2.9",

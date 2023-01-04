@@ -4,16 +4,32 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { type CustomAppProps } from "@webclient/pages/_app.types";
+import { auth } from "@webclient/services/auth/index";
+import { useAuth } from "@webclient/services/auth/use-auth";
 import { Footer } from "./footer";
 import styles from "./index.module.css";
 import logoImage from "./logo.svg";
+import githubLogoImage from "./github-logo.svg";
 
 interface LayoutProps {
   appProps: CustomAppProps;
   children: ReactNode;
 }
 
+const buttonOnClick = (e) => {
+  e.preventDefault();
+
+  if (auth.getUser() === null) {
+    auth.signInWithGitHub();
+    return;
+  }
+
+  auth.signOut();
+};
+
 const Layout = (props: LayoutProps) => {
+  const { isLoading, isLoggedIn, user } = useAuth();
+
   const router = useRouter();
   const pathname = (router.pathname === "/[...slug]")
     ? `/${router.query?.slug?.[0]}`
@@ -22,6 +38,10 @@ const Layout = (props: LayoutProps) => {
   const isActiveSection = (section: string) => {
     return pathname === `/${section}` || pathname.startsWith(`/${section}/`);
   };
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
 
   return (
     <>
@@ -32,6 +52,18 @@ const Layout = (props: LayoutProps) => {
       </Head>
       <div className={styles.app}>
         <main>
+          <nav className={styles["top-side"]}>
+            <button type="button" className={styles["login-button"]} onClick={buttonOnClick}>
+              <Image
+                src={githubLogoImage}
+                alt="github logo"
+                width="16"
+                height="16"
+                priority={true}
+              />
+              {isLoggedIn ? user!.displayName : "GitHub ile giriş yap"}
+            </button>
+          </nav>
           <section className={styles["hero-section"]}>
             <div className={styles.inner}>
               <div className={styles.content}>
@@ -92,9 +124,7 @@ const Layout = (props: LayoutProps) => {
                     </Link>
                   </li>
                   <li
-                    className={isActiveSection("guide")
-                      ? styles.active
-                      : ""}
+                    className={isActiveSection("guide") ? styles.active : ""}
                   >
                     <Link href="/guide/">
                       <svg

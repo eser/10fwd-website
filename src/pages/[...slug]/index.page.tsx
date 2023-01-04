@@ -10,7 +10,7 @@ const getStaticPaths = () => {
   const paths = allStaticPages.map((staticPage) => staticPage.url);
 
   return {
-    paths,
+    paths: paths,
     fallback: false,
   };
 };

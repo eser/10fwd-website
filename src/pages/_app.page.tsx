@@ -2,7 +2,10 @@ import { DefaultSeo } from "next-seo";
 import { type CustomAppProps } from "./_app.types";
 import { Layout } from "@webclient/shared/layout/index";
 import { defaults } from "@webclient/shared/defaults";
+import { auth } from "@webclient/services/auth/index";
 import "@webclient/shared/globals.css";
+
+auth.init();
 
 const CustomApp = (appProps: CustomAppProps) => {
   return (

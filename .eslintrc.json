@@ -391,10 +391,7 @@
     "no-var": "error",
 
     // require method and property shorthand syntax for object literals
-    "object-shorthand": ["error", "always", {
-      "ignoreConstructors": false,
-      "avoidQuotes": true
-    }],
+    "object-shorthand": ["error", "consistent"],
 
     // suggest using arrow functions as callbacks
     "prefer-arrow-callback": ["error", {
