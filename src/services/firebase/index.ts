@@ -3,6 +3,7 @@ import { FirebaseError, initializeApp } from "firebase/app";
 import {
   type AdditionalUserInfo,
   type Auth,
+  type AuthProvider,
   browserPopupRedirectResolver,
   getAdditionalUserInfo,
   GithubAuthProvider,
@@ -12,6 +13,13 @@ import {
 } from "firebase/auth";
 
 import { registry } from "../di/registry";
+import { AuthProviders } from "../auth/auth-providers";
+
+// constants
+// deno-lint-ignore no-explicit-any
+const authProviderMapping: Record<AuthProviders, [any, () => any]> = {
+  [AuthProviders.GitHub]: [GithubAuthProvider, () => new GithubAuthProvider()],
+};
 
 // interface definitions
 // ---------------------
@@ -68,8 +76,13 @@ class Firebase implements FirebaseInterface {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  async popupSignInWithGitHub(auth: Auth): Promise<PopupSignInResult> {
-    const provider = new GithubAuthProvider();
+  async popupSignInWithProvider(
+    auth: Auth,
+    authProvider: AuthProviders,
+  ): Promise<PopupSignInResult> {
+    const providerMapping = authProviderMapping[authProvider];
+    const providerType = providerMapping[0];
+    const provider: AuthProvider = providerMapping[1]();
 
     try {
       const userCredential = await signInWithPopup(
@@ -79,7 +92,7 @@ class Firebase implements FirebaseInterface {
       );
 
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-      const oauthCredential = GithubAuthProvider.credentialFromResult(
+      const oauthCredential = providerType.credentialFromResult(
         userCredential,
       );
 

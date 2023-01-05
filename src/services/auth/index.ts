@@ -3,7 +3,7 @@ import * as firebaseAuth from "firebase/auth";
 
 import { registry } from "../di/registry";
 import { firebase } from "../firebase/index";
-// import { createUser } from "../requests/authRequests";
+import { AuthProviders } from "./auth-providers";
 
 // interface definitions
 // ---------------------
@@ -22,7 +22,7 @@ interface AuthInterface {
   init: () => void;
 
   signInWithCustomToken: (customToken: string) => Promise<any>;
-  signInWithGitHub: () => Promise<AuthResponse>;
+  signInWithProvider: (authProvider: AuthProviders) => Promise<AuthResponse>;
   signOut: () => Promise<any>;
 
   onAuthStateChanged: (
@@ -70,15 +70,13 @@ class Auth implements AuthInterface {
     return firebaseAuth.signInWithCustomToken(this.#internalAuth, customToken);
   }
 
-  async signInWithGitHub(): Promise<AuthResponse> {
+  async signInWithProvider(authProvider: AuthProviders): Promise<AuthResponse> {
     assert(this.#internalAuth !== null, "internalAuth is not initialized");
 
-    const result = await firebase.popupSignInWithGitHub(this.#internalAuth);
-
-    // userCredential.user.displayName
-    // userCredential.user.email
-    // oauthCredential.accessToken
-    // additionalUserInfo.isNewUser
+    const result = await firebase.popupSignInWithProvider(
+      this.#internalAuth,
+      authProvider,
+    );
 
     return {
       userCredential: result.userCredential,

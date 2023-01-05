@@ -1,6 +1,10 @@
 import { type MouseEvent } from "react";
 import Image from "next/image";
-import { auth, useAuthContext } from "@webclient/services/auth/mod";
+import {
+  auth,
+  AuthProviders,
+  useAuthContext,
+} from "@webclient/services/auth/mod";
 import githubLogoImage from "./github-logo.svg";
 import styles from "./github-login-button.module.css";
 
@@ -19,7 +23,7 @@ const GitHubLoginButton = () => {
       return;
     }
 
-    auth.signInWithGitHub();
+    auth.signInWithProvider(AuthProviders.GitHub);
   };
 
   return (

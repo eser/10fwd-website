@@ -6,20 +6,20 @@
 import { loadEnvConfig } from "@next/env";
 import "@testing-library/jest-dom/extend-expect";
 
-jest.mock('next/router', () => ({
+jest.mock("next/router", () => ({
   useRouter() {
     return ({
-      route: '/',
-      pathname: '',
-      query: '',
-      asPath: '',
+      route: "/",
+      pathname: "",
+      query: "",
+      asPath: "",
       push: jest.fn(),
       events: {
         on: jest.fn(),
-        off: jest.fn()
+        off: jest.fn(),
       },
       beforePopState: jest.fn(() => null),
-      prefetch: jest.fn(() => null)
+      prefetch: jest.fn(() => null),
     });
   },
 }));
