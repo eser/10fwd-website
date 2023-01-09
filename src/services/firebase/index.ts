@@ -108,19 +108,19 @@ class Firebase implements FirebaseInterface {
         additionalUserInfo: additionalUserInfo,
         error: null,
       };
-    } catch (error) {
-      if (error instanceof FirebaseError) {
-        const oauthCredential = GithubAuthProvider.credentialFromError(error);
+    } catch (err) {
+      if (err instanceof FirebaseError) {
+        const oauthCredential = GithubAuthProvider.credentialFromError(err);
 
         return {
           userCredential: null,
           oauthCredential: oauthCredential,
           additionalUserInfo: null,
-          error: error,
+          error: err,
         };
       }
 
-      throw error;
+      throw err;
     }
   }
 }

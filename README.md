@@ -19,7 +19,7 @@ Bu kod tabanında, şu anda yapım aşamasında bulunan
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Next.js](https://nextjs.org/)
-- [tailwindcss](https://tailwindcss.com/)
+- [Mantine](https://mantine.dev/)
 - [Node.js](https://nodejs.org/)
 - [GitHub Actions](https://github.com/features/actions)
 - [adr-tool](https://github.com/keremciu/adr-tool)

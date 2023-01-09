@@ -1,7 +1,28 @@
 .app {
   @apply flex flex-col min-h-screen;
 
-  main {
+  .page-content {
+    display: block;
+    width: 100%;
+  }
+
+  /* Small Screens */
+  @media only screen and (max-width: 800px) {
+    .page-content {
+      width: auto;
+      padding: 2em 2em 1em 2em;
+      margin-left: 0;
+    }
+  }
+
+  /* Tiny Screens */
+  @media only screen and (max-width: 320px) {
+    .page-content {
+      padding: 1.2em 1.2em 0.6em 1.2em;
+    }
+  }
+
+  & main {
     @apply flex-1;
 
     .top-side {
@@ -17,11 +38,11 @@
         .content {
           @apply flex flex-col justify-center lg:max-w-xl xl:max-w-3xl;
 
-          img {
+          & img {
             @apply object-contain w-auto;
           }
 
-          p {
+          & p {
             @apply text-base leading-relaxed text-justify lg:text-lg xl:text-xl;
           }
         }
@@ -33,32 +54,6 @@
 
       .inner {
         @apply mx-auto container;
-
-        .tab-bar {
-          @apply border-b border-slate-200 mb-6;
-
-          & > ul {
-            @apply flex flex-wrap -mb-px text-sm font-medium text-center text-slate-500;
-
-            & > li {
-              @apply mr-2 cursor-pointer;
-
-              & > a {
-                @apply inline-flex py-4 pr-10 rounded-t-lg border-b-2 border-transparent text-slate-500 border-slate-200 hover:text-slate-600 hover:border-slate-300 hover:no-underline;
-
-                & > svg {
-                  @apply mr-2 w-5 h-5 text-inherit;
-                }
-              }
-
-              &.active {
-                & > a {
-                  @apply text-blue-600 border-blue-600;
-                }
-              }
-            }
-          }
-        }
       }
     }
   }

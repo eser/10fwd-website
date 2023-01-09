@@ -1,5 +1,6 @@
 import Image from "next/image";
-import styles from "./index.module.css";
+
+const styles: Record<string, string> = {};
 
 interface GuideCardProps {
   link: string;

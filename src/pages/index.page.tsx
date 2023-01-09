@@ -1,14 +1,32 @@
 import { NextSeo } from "next-seo";
-import { type CustomPage } from "@webclient/pages/_app.types";
+import { createStyles, SimpleGrid } from "@mantine/core";
+import { type Language } from "@webclient/shared/i18n";
+import { type CustomPage } from "@webclient/pages/_app.page";
+import { Layout } from "@webclient/shared/layout/index";
+import { HeroComponent } from "@webclient/shared/hero/index";
 import { InitiativeCard } from "@webclient/shared/initiative-card/index";
-import styles from "./index.module.css";
 
-const InitiativesComponent: CustomPage<never> = () => {
+interface InitiativesComponentProps {
+  lang: Language;
+}
+
+const useStyles = createStyles((theme) => ({
+  grid: {
+    padding: "20px",
+  },
+}));
+
+const InitiativesComponent: CustomPage<never> = (
+  props: InitiativesComponentProps,
+) => {
+  const { classes } = useStyles();
+
   return (
-    <>
+    <Layout lang={props.lang}>
       <NextSeo description="Yazılım geliştiricilerine yönelik bir meta-topluluk." />
+      <HeroComponent lang={props.lang} />
 
-      <div className={styles["initiative-cards"]}>
+      <SimpleGrid className={classes.grid} cols={3}>
         <InitiativeCard
           tags={["desteklenen mecra"]}
           title="opencast.co"
@@ -113,8 +131,8 @@ const InitiativesComponent: CustomPage<never> = () => {
           description="Fotoğrafla ilgili yazılımcılar için telegram tartışma grubu."
           link="https://t.me/fotoyazilim"
         />
-      </div>
-    </>
+      </SimpleGrid>
+    </Layout>
   );
 };
 

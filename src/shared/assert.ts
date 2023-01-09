@@ -1,5 +1,9 @@
 class AssertionError extends Error {
   override name = "AssertionError";
+
+  constructor(message = "") {
+    super(message);
+  }
 }
 
 // unfortunately, typescript doesn't support this syntax yet

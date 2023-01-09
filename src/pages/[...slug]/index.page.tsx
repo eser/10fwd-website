@@ -1,10 +1,13 @@
 import { type GetStaticProps } from "next";
 import { NextSeo } from "next-seo";
-import { type CustomPage } from "@webclient/pages/_app.types";
+import { type Language } from "@webclient/shared/i18n";
+import { type CustomPage } from "@webclient/pages/_app.page";
+import { Layout } from "@webclient/shared/layout/index";
 import { GuideCard } from "@webclient/shared/guide-card/index";
 import { allStaticPages, StaticPage } from "@contentlayer/generated";
 import { useMDXComponent } from "next-contentlayer/hooks";
-import styles from "./index.module.css";
+
+const styles: Record<string, string> = {};
 
 const getStaticPaths = () => {
   const paths = allStaticPages.map((staticPage) => staticPage.url);
@@ -31,6 +34,7 @@ const getStaticProps: GetStaticProps = ({ params }) => {
 };
 
 interface StaticPageComponentProps {
+  lang: Language;
   staticPage: StaticPage;
 }
 
@@ -45,7 +49,7 @@ const StaticPageComponent: CustomPage<StaticPageComponentProps> = (
   const MDXContent = useMDXComponent(props.staticPage.body.code);
 
   return (
-    <>
+    <Layout lang={props.lang}>
       <NextSeo title={props.staticPage.title} />
 
       <article className={styles.article}>
@@ -61,7 +65,7 @@ const StaticPageComponent: CustomPage<StaticPageComponentProps> = (
           </div>
         </div>
       </article>
-    </>
+    </Layout>
   );
 };
 

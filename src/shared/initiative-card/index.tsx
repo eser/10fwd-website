@@ -1,6 +1,14 @@
 import Image from "next/image";
+import {
+  Badge,
+  Button,
+  Card,
+  createStyles,
+  Flex,
+  Group,
+  Text,
+} from "@mantine/core";
 import { Conditional } from "@webclient/shared/react/conditional";
-import styles from "./index.module.css";
 
 interface InitiativeCardProps {
   tags: string[];
@@ -11,56 +19,85 @@ interface InitiativeCardProps {
   link: string;
 }
 
+const useStyles = createStyles((theme) => ({
+  logo: {
+    height: "8rem",
+  },
+
+  logoAlt: {
+    display: "flex",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    background: theme.colorScheme === "dark"
+      ? theme.colors.dark[7]
+      : theme.colors.gray[0],
+  },
+
+  button: {
+    "& i": {
+      fontSize: "1rem",
+    },
+  },
+}));
+
 const InitiativeCard = (props: InitiativeCardProps) => {
+  const { classes } = useStyles();
+
   return (
-    <a className={styles.card} href={props.link}>
-      <div className={styles.inner}>
-        <div className={styles.tags}>
-          {props.tags.join(", ")}
-        </div>
-        <Conditional
-          if={props.imageUri !== undefined}
-          then={
-            <div className={styles.image}>
+    <a href={props.link}>
+      <Card shadow="xs" p="md" radius="sm" withBorder>
+        <Card.Section
+          className={classes.logo}
+          component={Flex}
+          justify="center"
+          align="center"
+        >
+          <Conditional
+            if={props.imageUri !== undefined}
+            then={
               <Image
                 src={props.imageUri!}
                 alt={props.imageAltText}
                 width={376}
                 height={160}
               />
-            </div>
-          }
-          otherwise={
-            <div className={styles["image-placeholder"]}>
-              {props.imageAltText}
-            </div>
-          }
-        />
-        <h5 className={styles.title}>
-          {props.title}
-        </h5>
-        <p className={styles.description}>
+            }
+            otherwise={
+              <Text className={classes.logoAlt}>
+                {props.imageAltText}
+              </Text>
+            }
+          />
+        </Card.Section>
+
+        <Group position="apart" mt="md" mb="xs">
+          <Text color="gray.8" weight={600}>
+            {props.title}
+          </Text>
+          <Badge>
+            {props.tags.join(", ")}
+          </Badge>
+        </Group>
+
+        <Text size="sm" color="dimmed">
           {props.description}
-        </p>
-        <div className={`${styles.links} buttons`}>
-          <div className="button">
-            Ziyaret et
-            <svg
-              aria-hidden="true"
-              className="ml-2 -mr-1 w-4 h-4"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
+        </Text>
+
+        <Button
+          className={classes.button}
+          component="a"
+          variant="outline"
+          color="blue"
+          fullWidth
+          mt="md"
+          radius="md"
+          leftIcon={<i className="bx bx-link-external" />}
+        >
+          Ziyaret et
+        </Button>
+      </Card>
     </a>
   );
 };

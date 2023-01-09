@@ -1,4 +1,4 @@
-import { type CustomPage } from "@webclient/pages/_app.types";
+import { type CustomPage } from "@webclient/pages/_app.page";
 
 const AuthCallbackPage: CustomPage<never> = () => {
   return (

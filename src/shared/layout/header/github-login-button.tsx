@@ -1,15 +1,29 @@
 import { type MouseEvent } from "react";
-import Image from "next/image";
+import { Button, createStyles } from "@mantine/core";
 import {
   auth,
   AuthProviders,
   useAuthContext,
 } from "@webclient/services/auth/mod";
-import githubLogoImage from "./github-logo.svg";
-import styles from "./github-login-button.module.css";
+
+const useStyles = createStyles((theme) => ({
+  container: {
+    width: "100%",
+    padding: theme.spacing.sm,
+  },
+
+  button: {
+    color: theme.colors.gray[7],
+
+    "& i": {
+      fontSize: "1.25rem",
+    },
+  },
+}));
 
 const GitHubLoginButton = () => {
   const userState = useAuthContext();
+  const { classes } = useStyles();
 
   const buttonOnClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -27,22 +41,18 @@ const GitHubLoginButton = () => {
   };
 
   return (
-    <button
+    <Button
       type="button"
-      className={styles["login-button"]}
+      variant="default"
+      size="md"
+      className={classes.button}
+      leftIcon={<i className="bx bxl-github" />}
       onClick={buttonOnClick}
     >
-      <Image
-        src={githubLogoImage}
-        alt="github logo"
-        width="16"
-        height="16"
-        priority={true}
-      />
       {userState.isLoggedIn
         ? userState?.user.displayName
         : "GitHub ile giriş yap"}
-    </button>
+    </Button>
   );
 };
 

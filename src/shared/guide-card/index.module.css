@@ -35,7 +35,7 @@
 
       & > .title,
       & > .description span {
-        @apply break-words text-ellipsis bg-blue-400 bg-opacity-100 text-white box-decoration-clone px-4 py-2 leading-7 lg:leading-9;
+        @apply break-words text-ellipsis bg-blue-400 bg-opacity-100 text-white box-decoration-clone px-4 py-2 leading-relaxed lg:leading-loose;
       }
 
       & > .title {
