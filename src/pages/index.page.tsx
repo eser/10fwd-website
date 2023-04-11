@@ -11,6 +11,14 @@ const InitiativesComponent: CustomPage<never> = () => {
       <div className={styles["initiative-cards"]}>
         <InitiativeCard
           tags={["desteklenen mecra"]}
+          title="Codenteq"
+          imageUri="/initiatives/codenteq-logo.svg"
+          imageAltText="codenteq"
+          description="Açık kaynak yazılım geliştirme topluluğu."
+          link="https://codenteq.com/"
+        />
+        <InitiativeCard
+          tags={["desteklenen mecra"]}
           title="Frontendship"
           imageAltText="discord.gg/frontendship"
           description="Frontend alanına yoğunlaşmış bir topluluk."
